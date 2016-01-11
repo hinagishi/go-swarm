@@ -1,7 +1,20 @@
 package swarm
 
+type Options struct {
+	Limit           int
+	Offset          int
+	sort            string
+	AfterTimestamp  int
+	BeforeTimestamp int
+}
+
+type MetaInfo struct {
+	Code int `json:"code"`
+}
+
 type Resjson struct {
-	Res Response `json:"response"`
+	Meta MetaInfo `json:"meta"`
+	Res  Response `json:"response"`
 }
 
 type Response struct {
@@ -18,4 +31,5 @@ type Item struct {
 	CreatedAt int    `json:"createdAt"`
 	Type      string `json:"type"`
 	Shout     string `json:"shout"`
+	TimeZone  int    `json:"timeZoneOffset"`
 }

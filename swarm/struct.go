@@ -8,17 +8,27 @@ type Options struct {
 	BeforeTimestamp int
 }
 
+type Resjson struct {
+	Meta  MetaInfo       `json:"meta"`
+	Notif []Notification `json:"notifications"`
+	Res   Response       `json:"response"`
+}
+
 type MetaInfo struct {
 	Code int `json:"code"`
 }
 
-type Resjson struct {
-	Meta MetaInfo `json:"meta"`
-	Res  Response `json:"response"`
+type Notification struct {
+	Type string    `json:"type"`
+	Item NotifItem `json:"item"`
+}
+
+type NotifItem struct {
+	UnreadCount int `json:"unreadCount"`
 }
 
 type Response struct {
-	Checkins Checkin `json:"checkins"`
+	Checkins Checkin `json:"checkIns"`
 }
 
 type Checkin struct {

@@ -36,10 +36,25 @@ type Checkin struct {
 	Items []Item `json:"items"`
 }
 
+type GeoLocation struct {
+	ID   string `json:"id"`
+	Name string `json:"name"`
+}
+
+type Source struct {
+	Name string `json:"name"`
+	URL  string `json:"url"`
+}
+
 type Item struct {
-	ID        string `json:"id"`
-	CreatedAt int    `json:"createdAt"`
-	Type      string `json:"type"`
-	Shout     string `json:"shout"`
-	TimeZone  int    `json:"timeZoneOffset"`
+	ID        string      `json:"id"`
+	CreatedAt int         `json:"createdAt"`
+	Type      string      `json:"type"`
+	Shout     string      `json:"shout"`
+	TimeZone  int         `json:"timeZoneOffset"`
+	Geo       GeoLocation `json:"displayGeo"`
+	Context   string      `json:"exactContextLine"`
+	Like      bool        `json:"like"`
+	IsMayor   bool        `json:"isMayor"`
+	AppSource Source      `json:"source"`
 }

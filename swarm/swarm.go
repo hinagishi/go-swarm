@@ -14,18 +14,18 @@ type Oauth struct {
 	RedirectURI  string
 }
 
-func GetCheckIns(v *url.Values) *Resjson {
+func GetCheckIns(v *url.Values) (*Resjson, *Error) {
 	url := "https://api.foursquare.com/v2/users/self/checkins?" + v.Encode()
 
 	resp, err := http.Get(url)
 	if err != nil {
-		return nil
+		return nil, err
 	}
 	defer resp.Body.Close()
 
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
-		return nil
+		return nil, err
 	}
 
 	fmt.Println(url)
